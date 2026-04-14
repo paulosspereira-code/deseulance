@@ -1,0 +1,7 @@
+{
+  "sdk": {
+    "version": "9.0.302",
+    "rollForward": "latestMajor",
+    "errorMessage": "Não foi encontrada uma versão compatível do .NET SDK. Por favor instale uma versão mais recente. Vide global.json."
+  }
+}
