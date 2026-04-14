@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "dotnet run --project API/API.csproj",
+    "start-api": "npm run start",
+    "docker:up": "docker-compose up -d",
+    "docker:up:build": "docker-compose up -d --build",
+    "docker:down": "docker-compose down",
+    "docker:down:volumes": "docker-compose down -v",
+    "docker:restart": "docker-compose restart",
+    "docker:logs": "docker-compose logs -f",
+    "docker:logs:api": "docker-compose logs -f api"
+  }
+}
