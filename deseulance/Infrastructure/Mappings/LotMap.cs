@@ -8,6 +8,8 @@ public class LotMap : IEntityTypeConfiguration<Lot>
 {
     public void Configure(EntityTypeBuilder<Lot> builder)
     {
+        builder.ToTable("Lot");
+
         builder.HasKey(x => x.IdLot);
 
         builder.Property(x => x.IdLot)

@@ -8,6 +8,8 @@ public class UserClientMap : IEntityTypeConfiguration<UserClient>
 {
     public void Configure(EntityTypeBuilder<UserClient> builder)
     {
+        builder.ToTable("UserClient");
+
         builder.HasKey(x => x.IdUserClient);
 
         builder.Property(x => x.IdUserClient)
