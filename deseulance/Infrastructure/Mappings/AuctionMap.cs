@@ -1,0 +1,32 @@
+using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace Infrastructure.Mappings;
+
+public class AuctionMap : IEntityTypeConfiguration<Auction>
+{
+    public void Configure(EntityTypeBuilder<Auction> builder)
+    {
+        builder.HasKey(x => x.IdAuction);
+
+        builder.Property(x => x.IdAuction)
+            .ValueGeneratedOnAdd();
+
+        builder.Property(x => x.Title)
+            .IsRequired()
+            .HasMaxLength(200);
+
+        builder.Property(x => x.Status)
+            .IsRequired()
+            .HasConversion<int>();
+
+        builder.Property(x => x.AuctionDate)
+            .IsRequired();
+
+        builder.HasMany(x => x.Lots)
+            .WithOne(x => x.Auction)
+            .HasForeignKey(x => x.AuctionId)
+            .OnDelete(DeleteBehavior.Cascade);
+    }
+}
