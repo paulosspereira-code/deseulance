@@ -17,7 +17,7 @@ public class AuctionMap : IEntityTypeConfiguration<Auction>
 
         builder.Property(x => x.Title)
             .IsRequired()
-            .HasMaxLength(200);
+            .HasMaxLength(50);
 
         builder.Property(x => x.Status)
             .IsRequired()
@@ -29,6 +29,6 @@ public class AuctionMap : IEntityTypeConfiguration<Auction>
         builder.HasMany(x => x.Lots)
             .WithOne(x => x.Auction)
             .HasForeignKey(x => x.AuctionId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

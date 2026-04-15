@@ -20,7 +20,7 @@ public class LotMap : IEntityTypeConfiguration<Lot>
 
         builder.Property(x => x.Title)
             .IsRequired()
-            .HasMaxLength(200);
+            .HasMaxLength(150);
 
         builder.Property(x => x.Price)
             .IsRequired()
@@ -32,6 +32,6 @@ public class LotMap : IEntityTypeConfiguration<Lot>
         builder.HasOne(x => x.Auction)
             .WithMany(x => x.Lots)
             .HasForeignKey(x => x.AuctionId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
