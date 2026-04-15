@@ -33,5 +33,8 @@ public class AuctionMap : IEntityTypeConfiguration<Auction>
             .WithOne(x => x.Auction)
             .HasForeignKey(x => x.AuctionId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        var navigation = builder.Metadata.FindNavigation(nameof(Auction.Lots));
+        navigation?.SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

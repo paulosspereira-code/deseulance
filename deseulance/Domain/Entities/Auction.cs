@@ -15,11 +15,20 @@ namespace Domain.Entities
 
         protected Auction() { }
 
-        public Auction(string title, DateTime auctionDate)
+        public Auction(
+            string title,
+            DateTime auctionDate,
+            List<Lot> lots)
         {
             Title = title;
             AuctionDate = auctionDate;
             Status = EAuctionStatus.Aberto;
+
+            foreach (var lot in lots)
+            {
+                _lots.Add(lot);
+            }
+
         }
 
         public void FinishAuction()
