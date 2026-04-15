@@ -8,6 +8,8 @@ public class AuctionMap : IEntityTypeConfiguration<Auction>
 {
     public void Configure(EntityTypeBuilder<Auction> builder)
     {
+        builder.ToTable("Auction");
+
         builder.HasKey(x => x.IdAuction);
 
         builder.Property(x => x.IdAuction)
