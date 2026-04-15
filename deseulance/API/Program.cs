@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Builder;
-using Infrastructure.Context;
+using Infrastructure;
+using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +29,8 @@ builder.Services.AddOpenApiDocument(config =>
     config.OperationProcessors.Add(
         new NSwag.Generation.Processors.Security.AspNetCoreOperationSecurityScopeProcessor("JWT"));
 });
+
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 

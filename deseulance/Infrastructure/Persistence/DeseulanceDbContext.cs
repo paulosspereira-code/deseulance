@@ -1,9 +1,10 @@
+using Application.Common.Interfaces.Persistence;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Context;
+namespace Infrastructure.Persistence;
 
-public class DeseulanceDbContext : DbContext
+public class DeseulanceDbContext : DbContext, IApplicationDbContext
 {
     public DeseulanceDbContext(DbContextOptions<DeseulanceDbContext> options)
         : base(options)
@@ -14,6 +15,7 @@ public class DeseulanceDbContext : DbContext
     public DbSet<AuctionBid> AuctionBids => Set<AuctionBid>();
     public DbSet<Lot> Lots => Set<Lot>();
     public DbSet<UserClient> UserClients => Set<UserClient>();
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
