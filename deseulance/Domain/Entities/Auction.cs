@@ -8,6 +8,7 @@ namespace Domain.Entities
         public string Title { get; private set; } = string.Empty;
         public EAuctionStatus Status { get; private set; }
         public DateTime AuctionDate { get; private set; }
+        public bool IsActive { get; private set; }
 
         private readonly List<Lot> _lots = new();
         public IReadOnlyCollection<Lot> Lots => _lots.AsReadOnly();

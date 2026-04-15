@@ -26,6 +26,9 @@ public class AuctionMap : IEntityTypeConfiguration<Auction>
         builder.Property(x => x.AuctionDate)
             .IsRequired();
 
+        builder.Property(x => x.IsActive)
+            .IsRequired();
+
         builder.HasMany(x => x.Lots)
             .WithOne(x => x.Auction)
             .HasForeignKey(x => x.AuctionId)

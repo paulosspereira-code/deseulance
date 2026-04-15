@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Infrastructure.Context;
+namespace Infrastructure.Persistence;
 
 public class DeseulanceDbContextFactory : IDesignTimeDbContextFactory<DeseulanceDbContext>
 {
