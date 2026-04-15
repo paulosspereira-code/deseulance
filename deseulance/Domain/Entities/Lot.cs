@@ -13,9 +13,8 @@ namespace Domain.Entities
 
         protected Lot() { }
 
-        public Lot(int auctionId, string title, decimal price)
+        public Lot(string title, decimal price)
         {
-            AuctionId = auctionId;
             Title = title;
             Price = price;
             IsActive = true;
