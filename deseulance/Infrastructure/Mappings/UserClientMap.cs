@@ -17,14 +17,14 @@ public class UserClientMap : IEntityTypeConfiguration<UserClient>
 
         builder.Property(x => x.Name)
             .IsRequired()
-            .HasMaxLength(150);
+            .HasMaxLength(100);
 
         builder.Property(x => x.Email)
             .IsRequired()
-            .HasMaxLength(200);
+            .HasMaxLength(50);
 
         builder.Property(x => x.Password2)
             .IsRequired()
-            .HasMaxLength(255);
+            .HasMaxLength(256);
     }
 }
