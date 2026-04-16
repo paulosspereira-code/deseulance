@@ -17,11 +17,10 @@ namespace Infrastructure.Repositories
                 .AnyAsync(u => u.Email == email, cancellationToken);
         }
 
-        public async Task<UserClient?> GetByEmail(string email, CancellationToken cancellationToken = default)
+        public IQueryable<UserClient> GetUsers()
         {
-            return await context.UserClients
-                .AsNoTracking()
-                .FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
+            return context.UserClients
+                .AsNoTracking();
         }
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)

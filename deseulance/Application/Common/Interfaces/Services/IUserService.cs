@@ -7,6 +7,6 @@ namespace Application.Common.Interfaces.Services
         Task AddAsync(UserClient entity, CancellationToken cancellationToken);
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         Task<bool> CheckExist(string email, CancellationToken cancellationToken = default);
-        Task<UserClient?> GetByEmail(string email, CancellationToken cancellationToken = default);
+        IQueryable<UserClient> GetUsers();
     }
 }

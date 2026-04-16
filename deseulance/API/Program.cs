@@ -2,6 +2,7 @@ using API.Converters;
 using API.Exceptions;
 using API.Features.Auctions.Endpoints;
 using API.Features.Lots.Endpoints;
+using API.Features.Users.Endpoints;
 using Application;
 using Infrastructure;
 
@@ -55,6 +56,7 @@ app.UseHttpsRedirection();
 
 app.MapAuctionEndpoints();
 app.MapLotEndpoints();
+app.MapUserEndpoints();
 
 app.UseExceptionHandler();
 
