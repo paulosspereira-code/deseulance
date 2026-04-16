@@ -62,6 +62,7 @@ namespace API.Features.Auctions.Endpoints
             .Produces(StatusCodes.Status400BadRequest)
             .Produces(StatusCodes.Status404NotFound);
 
+            // DELETE: /api/auctions/{id}
             group.MapDelete("/{id:int}", async (
                 [FromRoute] int id,
                 [FromServices] IMediator mediator,
@@ -92,6 +93,7 @@ namespace API.Features.Auctions.Endpoints
             .Produces(StatusCodes.Status400BadRequest)
             .Produces(StatusCodes.Status404NotFound);
 
+            // GET: /api/auctions/{id}
             group.MapGet("/{id:int}", async (int id, IMediator mediator, CancellationToken ct) =>
             {
                 var result = await mediator.Send(new GetByIdAuctionQuery { Id = id }, ct);
@@ -109,6 +111,7 @@ namespace API.Features.Auctions.Endpoints
             .Produces<AuctionDto>(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status404NotFound);
 
+            // PUT: /api/auctions/{id}/finish
             group.MapPut("/finish", async (
                [FromBody] FinishAuctionCommand command,
                [FromServices] IMediator mediator,

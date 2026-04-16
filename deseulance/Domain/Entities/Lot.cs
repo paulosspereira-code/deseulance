@@ -19,5 +19,10 @@ namespace Domain.Entities
             Price = price;
             IsActive = true;
         }
+
+        public void Deactivate()
+        {
+            IsActive = false;
+        }
     }
 }

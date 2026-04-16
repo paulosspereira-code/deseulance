@@ -1,5 +1,6 @@
 using API.Converters;
 using API.Exceptions;
+using API.Features.AuctionBids.Endpoints;
 using API.Features.Auctions.Endpoints;
 using API.Features.Lots.Endpoints;
 using API.Features.Users.Endpoints;
@@ -57,6 +58,7 @@ app.UseHttpsRedirection();
 app.MapAuctionEndpoints();
 app.MapLotEndpoints();
 app.MapUserEndpoints();
+app.MapAuctionBidEndpoints();
 
 app.UseExceptionHandler();
 

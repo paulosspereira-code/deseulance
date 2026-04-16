@@ -6,8 +6,8 @@ namespace Application.Common.Dtos
 {
     public class UserClientDto : IMapFrom<UserClient>
     {
-        public int IdUserClient { get; private set; }
-        public string Name { get; private set; } = string.Empty;
-        public string Email { get; private set; } = string.Empty;
+        public int IdUserClient { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
     }
 }
