@@ -9,11 +9,15 @@ namespace Application.Services
         public Task AddAsync(Auction entity, CancellationToken cancellationToken)
             => auctionRepository.AddAsync(entity, cancellationToken);
 
+        public async Task<bool> CheckExist(int id, CancellationToken cancellationToken = default)
+        {
+            return await auctionRepository.CheckExist(id, cancellationToken);
+        }
+
         public void Delete(Auction entity)
             => auctionRepository.Delete(entity);
 
-        public Task<List<Auction>> GetAllAsync(CancellationToken cancellationToken)
-            => auctionRepository.GetAllAsync(cancellationToken);
+        public IQueryable<Auction> GetAll() => auctionRepository.GetAll();
 
         public Task<Auction?> GetByIdAsync(int id, CancellationToken cancellationToken)
             => auctionRepository.GetByIdAsync(id, cancellationToken);

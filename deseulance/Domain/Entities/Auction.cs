@@ -23,12 +23,19 @@ namespace Domain.Entities
             Title = title;
             AuctionDate = auctionDate;
             Status = EAuctionStatus.Aberto;
+            IsActive = true;
 
-            foreach (var lot in lots)
+            if (lots != null)
             {
-                _lots.Add(lot);
+                _lots.AddRange(lots);
             }
 
+        }
+
+        public void AddLot(Lot lot)
+        {
+            EnsureAuctionIsAberto();
+            _lots.Add(lot);
         }
 
         public void FinishAuction()
@@ -38,6 +45,7 @@ namespace Domain.Entities
 
         public void Update(string title, DateTime auctionDate)
         {
+            EnsureAuctionIsAberto();
             Title = title;
             AuctionDate = auctionDate;
         }
@@ -47,16 +55,17 @@ namespace Domain.Entities
         /// </summary>
         public void UpdateLots(IEnumerable<Lot> newLots)
         {
-            if (Status != EAuctionStatus.Aberto)
-            {
-                throw new InvalidOperationException("Não é possível alterar lotes de um leilão encerrado ou finalizado.");
-            }
+            EnsureAuctionIsAberto();
 
             _lots.Clear();
+            _lots.AddRange(newLots);
+        }
 
-            foreach (var lot in newLots)
+        private void EnsureAuctionIsAberto()
+        {
+            if (Status != EAuctionStatus.Aberto)
             {
-                _lots.Add(lot);
+                throw new InvalidOperationException("Operação não permitida: O leilão não está mais aberto.");
             }
         }
     }

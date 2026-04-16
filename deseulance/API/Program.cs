@@ -1,10 +1,8 @@
 using API.Converters;
 using API.Exceptions;
-using API.Features.Commands;
+using API.Features.Auctions.Endpoints;
 using Application;
 using Infrastructure;
-using Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
