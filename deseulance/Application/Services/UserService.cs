@@ -12,8 +12,7 @@ namespace Application.Services
         public Task<bool> CheckExist(string email, CancellationToken cancellationToken = default)
             => userRepository.CheckExist(email, cancellationToken);
 
-        public Task<UserClient?> GetByEmail(string email, CancellationToken cancellationToken = default)
-            => userRepository.GetByEmail(email, cancellationToken);
+        public IQueryable<UserClient> GetUsers() => userRepository.GetUsers();
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken)
             => userRepository.SaveChangesAsync(cancellationToken);

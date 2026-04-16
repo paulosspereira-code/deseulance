@@ -14,7 +14,17 @@ namespace Domain.Entities
         {
             Name = name;
             Email = email;
-            Password2 = password;
+            Password2 = EncodePassword(password);
+        }
+
+        public string EncodePassword(string password)
+        {
+           return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(password));
+        }
+
+        public string DecodePassword(string encodedPassword)
+        {
+            return System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(encodedPassword));
         }
     }
 }
