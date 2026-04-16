@@ -9,6 +9,7 @@ namespace Application.Common.Interfaces.Services
         void Update(Auction entity);
         void Delete(Auction entity);
         Task<Auction?> GetByIdAsync(int id, CancellationToken cancellationToken);
-        Task<List<Auction>> GetAllAsync(CancellationToken cancellationToken);
+        IQueryable<Auction> GetAll();
+        Task<bool> CheckExist(int id, CancellationToken cancellationToken = default);
     }
 }

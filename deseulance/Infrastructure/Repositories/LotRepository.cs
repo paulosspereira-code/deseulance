@@ -7,12 +7,16 @@ namespace Infrastructure.Repositories
 {
     public class LotRepository(DeseulanceDbContext context) : ILotRepository
     {
-        public async Task<List<Lot>> GetAllAsync(int auctionId, CancellationToken cancellationToken)
+        public void DeleteRange(List<Lot> lots)
         {
-            return await context.Lots
+            context.Lots.RemoveRange(lots);
+        }
+
+        public IQueryable<Lot> GetLotsByIdAuction(int auctionId, CancellationToken cancellationToken)
+        {
+            return context.Lots
                 .AsNoTracking()
-                .Where(l => l.AuctionId == auctionId && l.IsActive)
-                .ToListAsync(cancellationToken);
+                .Where(l => l.AuctionId == auctionId && l.IsActive);
         }
     }
 }

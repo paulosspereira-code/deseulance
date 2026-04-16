@@ -10,20 +10,23 @@ namespace Infrastructure.Repositories
         public virtual async Task AddAsync(Auction entity, CancellationToken cancellationToken)
                 => await context.AddAsync(entity, cancellationToken);
 
+        public async Task<bool> CheckExist(int id, CancellationToken cancellationToken = default)
+        {
+            return await context.Auctions.AnyAsync(a => a.IdAuction == id, cancellationToken);
+        }
+
         public virtual void Delete(Auction entity)
             => context.Remove(entity);
 
-        public async Task<List<Auction>> GetAllAsync(CancellationToken cancellationToken)
+        public IQueryable<Auction> GetAll()
         {
-            return await context.Auctions
-                .AsNoTracking()
-                .ToListAsync(cancellationToken);
+            return context.Auctions.AsNoTracking();
         }
 
         public async Task<Auction?> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
             return await context.Auctions
-                .AsNoTracking()
+                .AsNoTracking().Include(x => x.Lots)
                 .FirstOrDefaultAsync(a => a.IdAuction == id, cancellationToken);
         }
 
