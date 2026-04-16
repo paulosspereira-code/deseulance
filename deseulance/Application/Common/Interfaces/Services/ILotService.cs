@@ -4,6 +4,7 @@ namespace Application.Common.Interfaces.Services
 {
     public interface ILotService
     {
-        Task<List<Lot>> GetAllAsync(int auctionId, CancellationToken cancellationToken);
+        IQueryable<Lot> GetLotsByIdAuction(int auctionId, CancellationToken cancellationToken);
+        void DeleteRange(List<Lot> lots);
     }
 }

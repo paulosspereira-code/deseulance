@@ -6,7 +6,12 @@ namespace Application.Services
 {
     public class LotService(ILotRepository lotRepository) : ILotService
     {
-        public Task<List<Lot>> GetAllAsync(int auctionId, CancellationToken cancellationToken)
-            => lotRepository.GetAllAsync(auctionId, cancellationToken);
+        public void DeleteRange(List<Lot> lots)
+        {
+            lotRepository.DeleteRange(lots);
+        }
+
+        public IQueryable<Lot> GetLotsByIdAuction(int auctionId, CancellationToken cancellationToken)
+            => lotRepository.GetLotsByIdAuction(auctionId, cancellationToken);
     }
 }

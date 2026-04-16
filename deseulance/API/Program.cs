@@ -1,16 +1,13 @@
 using API.Converters;
 using API.Exceptions;
 using API.Features.Auctions.Endpoints;
+using API.Features.Lots.Endpoints;
 using Application;
 using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-//builder.Services.AddDbContext<DeseulanceDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -57,6 +54,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapAuctionEndpoints();
+app.MapLotEndpoints();
 
 app.UseExceptionHandler();
 

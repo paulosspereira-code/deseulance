@@ -26,7 +26,7 @@ namespace Infrastructure.Repositories
         public async Task<Auction?> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
             return await context.Auctions
-                .AsNoTracking()
+                .AsNoTracking().Include(x => x.Lots)
                 .FirstOrDefaultAsync(a => a.IdAuction == id, cancellationToken);
         }
 
