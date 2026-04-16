@@ -109,6 +109,24 @@ namespace API.Features.Auctions.Endpoints
             .Produces<AuctionDto>(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status404NotFound);
 
+            group.MapPut("/finish", async (
+               [FromBody] FinishAuctionCommand command,
+               [FromServices] IMediator mediator,
+               CancellationToken ct) =>
+            {
+                await mediator.Send(command);
+                return Results.NoContent();
+            })
+           .WithName("FinishAuction")
+           .WithOpenApi(operation => new(operation)
+           {
+               Summary = "Finish Leilão.",
+               Description = "Recebe um ID de leilão via parâmetro e finaliza o leilão correspondente."
+           })
+           .Produces(StatusCodes.Status204NoContent)
+           .Produces(StatusCodes.Status400BadRequest)
+           .Produces(StatusCodes.Status404NotFound);
+
         }
     }
 }
