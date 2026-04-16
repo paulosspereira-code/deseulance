@@ -1,11 +1,9 @@
 ﻿
 using Application.Common.Dtos;
-using Application.Common.Interfaces.Repositories;
 using Application.Common.Interfaces.Services;
 using Domain.Entities;
 using FluentValidation;
 using MediatR;
-using System.Threading;
 
 namespace Application.Features.Auctions.Commands
 {
