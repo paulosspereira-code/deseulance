@@ -14,6 +14,11 @@ namespace Application.Services
             return await auctionRepository.CheckExist(id, cancellationToken);
         }
 
+        public async Task<bool> CheckFinish(int id, CancellationToken cancellationToken = default)
+        {
+            return await auctionRepository.CheckFinish(id, cancellationToken);
+        }
+
         public void Delete(Auction entity)
             => auctionRepository.Delete(entity);
 

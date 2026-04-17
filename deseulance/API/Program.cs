@@ -1,5 +1,6 @@
 using API.Converters;
 using API.Exceptions;
+using API.Features.AuctionBids.Endpoints;
 using API.Features.Auctions.Endpoints;
 using API.Features.Lots.Endpoints;
 using API.Features.Users.Endpoints;
@@ -19,9 +20,9 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 builder.Services.AddOpenApiDocument(config =>
 {
-    config.Title = "API deseulance"; 
+    config.Title = "API deseulance";
 
-    
+
     config.AddSecurity("JWT", new NSwag.OpenApiSecurityScheme
     {
         Type = NSwag.OpenApiSecuritySchemeType.Http,
@@ -30,7 +31,7 @@ builder.Services.AddOpenApiDocument(config =>
         Description = "JWT Authorization header using the Bearer scheme."
     });
 
-    
+
     config.OperationProcessors.Add(
         new NSwag.Generation.Processors.Security.AspNetCoreOperationSecurityScopeProcessor("JWT"));
 });
@@ -49,7 +50,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseOpenApi();    
     app.UseSwaggerUi();  
-    app.MapGet("/", () => Results.Redirect("/swagger"));
+    app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
 }
 
 app.UseHttpsRedirection();
@@ -57,6 +58,7 @@ app.UseHttpsRedirection();
 app.MapAuctionEndpoints();
 app.MapLotEndpoints();
 app.MapUserEndpoints();
+app.MapAuctionBidEndpoints();
 
 app.UseExceptionHandler();
 

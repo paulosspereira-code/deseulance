@@ -11,5 +11,6 @@ namespace Application.Common.Interfaces.Services
         Task<Auction?> GetByIdAsync(int id, CancellationToken cancellationToken);
         IQueryable<Auction> GetAll();
         Task<bool> CheckExist(int id, CancellationToken cancellationToken = default);
+        Task<bool> CheckFinish(int id, CancellationToken cancellationToken = default);
     }
 }
