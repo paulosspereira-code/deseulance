@@ -42,4 +42,7 @@ O projeto foi desenvolvido seguindo os princípios da **Clean Architecture**, vi
 ##### Rodar o projeto
 * *Após a inicialização dos containers, rode o projeto pelo docker compose, acesse a janela dos containers, clique na porta do container da API e o projeto estará disponível em http://localhost:5000/swagger/index.html.
 * *Você poderá acessar os endpoints através do swagger.
- 
+
+###### Implementações futuras
+* Testes unitários
+* Autenticação via token jwt 
