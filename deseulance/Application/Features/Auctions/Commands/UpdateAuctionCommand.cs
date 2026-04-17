@@ -23,24 +23,23 @@ namespace Application.Features.Auctions.Commands
         {
 
             await validator.ValidateAndThrowAsync(request, ct);
-            // 1. Busca a entidade no banco (incluindo os lotes para o EF rastrear a substituição)
+
             var auction = await auctionService.GetByIdAsync(request.Id, ct);
 
             auction!.Update(request.Title, request.AuctionDate);
 
                 if (request.Lots != null)
                 {
-                    // Mapeia DTOs para Entidades de Lote (pode usar AutoMapper aqui se preferir)
                     var newLots = request.Lots.Select(l => new Lot(l.Title, l.Price));
+
                     auction.UpdateLots(newLots);
                 }
 
-            // 3. Persiste as mudanças
             auctionService.Update(auction);
+           
             await auctionService.SaveChangesAsync(ct);
 
-
-                return Unit.Value;
+            return Unit.Value;
         }
     }
 }

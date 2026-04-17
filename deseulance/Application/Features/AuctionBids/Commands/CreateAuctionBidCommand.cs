@@ -2,6 +2,7 @@
 using Domain.Entities;
 using FluentValidation;
 using MediatR;
+using System.Security.Cryptography;
 
 namespace Application.Features.AuctionBids.Commands
 {
@@ -16,6 +17,7 @@ namespace Application.Features.AuctionBids.Commands
 
     public class CreateAuctionBidCommandHandler(
         IAuctionBidService auctionBidService,
+        ILotService lotService,
         IValidator<CreateAuctionBidCommand> validator) : IRequestHandler<CreateAuctionBidCommand, Unit>
     {
 

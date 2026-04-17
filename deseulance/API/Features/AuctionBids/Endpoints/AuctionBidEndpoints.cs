@@ -1,7 +1,4 @@
-﻿using Application.Common.Dtos;
-using Application.Features.AuctionBids.Commands;
-using Application.Features.Auctions.Commands;
-using Application.Features.Auctions.Queries;
+﻿using Application.Features.AuctionBids.Commands;
 using FluentValidation;
 using MediatR;
 

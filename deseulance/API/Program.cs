@@ -20,9 +20,9 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 builder.Services.AddOpenApiDocument(config =>
 {
-    config.Title = "API deseulance"; 
+    config.Title = "API deseulance";
 
-    
+
     config.AddSecurity("JWT", new NSwag.OpenApiSecurityScheme
     {
         Type = NSwag.OpenApiSecuritySchemeType.Http,
@@ -31,7 +31,7 @@ builder.Services.AddOpenApiDocument(config =>
         Description = "JWT Authorization header using the Bearer scheme."
     });
 
-    
+
     config.OperationProcessors.Add(
         new NSwag.Generation.Processors.Security.AspNetCoreOperationSecurityScopeProcessor("JWT"));
 });
@@ -50,7 +50,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseOpenApi();    
     app.UseSwaggerUi();  
-    app.MapGet("/", () => Results.Redirect("/swagger"));
+    app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
 }
 
 app.UseHttpsRedirection();

@@ -71,13 +71,6 @@ namespace API.Features.Auctions.Endpoints
             {
                 var commandDelete = new DeleteAuctionCommand { Id = id };
 
-                var validationResult = await validator.ValidateAsync(commandDelete, ct);
-
-                if (!validationResult.IsValid)
-                {
-                    return Results.ValidationProblem(validationResult.ToDictionary());
-                }
-
                 await mediator.Send(commandDelete);
 
                 return Results.NoContent();

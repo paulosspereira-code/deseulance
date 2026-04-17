@@ -17,6 +17,21 @@ namespace Infrastructure.Repositories
                 .ToListAsync(cancellationToken);
         }
 
+        public async Task<decimal> GetMaxBidAmountByLotIdAsync(int lotId, CancellationToken cancellationToken)
+        {
+            return await context.AuctionBids
+                .Where(ab => ab.LotId == lotId)
+                .MaxAsync(ab => (decimal?)ab.BidAmount, cancellationToken) ?? 0m;
+        }
+
+        public async Task<AuctionBid?> GetWinnerAsync(int lotId, int auctionId, CancellationToken cancellationToken)
+        {
+            return await context.AuctionBids
+                .Where(ab => ab.LotId == lotId && ab.AuctionId == auctionId)
+                .OrderByDescending(ab => ab.BidAmount)
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
             => await context.SaveChangesAsync(cancellationToken);
     }

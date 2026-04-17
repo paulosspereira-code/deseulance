@@ -1,5 +1,7 @@
 ﻿using Application.Common.Interfaces.Services;
+using FluentValidation;
 using MediatR;
+using System.ComponentModel.DataAnnotations;
 
 namespace Application.Features.Auctions.Commands
 {
@@ -9,11 +11,12 @@ namespace Application.Features.Auctions.Commands
     }
 
     public class DeleteAuctionCommandHandler(
-  IAuctionService auctionService,
+  IAuctionService auctionService, IValidator<DeleteAuctionCommand> validator,
   ILotService lotService) : IRequestHandler<DeleteAuctionCommand, Unit>
     {
         public async Task<Unit> Handle(DeleteAuctionCommand request, CancellationToken ct)
         {
+           await validator.ValidateAsync(request, ct);
 
             var auction = await auctionService.GetByIdAsync(request.Id, ct);
 

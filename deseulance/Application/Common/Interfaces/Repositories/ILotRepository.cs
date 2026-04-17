@@ -10,5 +10,6 @@ namespace Application.Common.Interfaces.Repositories
         Task<Lot?> GetByIdAsync(int id, CancellationToken cancellationToken);
         void Update(Lot entity);
         Task<bool> CheckDeactivate(int id, CancellationToken cancellationToken = default);
+        
     }
 }
