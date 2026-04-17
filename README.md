@@ -7,15 +7,17 @@ O projeto foi desenvolvido seguindo os princípios da **Clean Architecture**, vi
 
 ### Divisão de Camadas:
 * **Domain:** Contém as entidades de negócio, interfaces, exceções de domínio e regras fundamentais (DDD). Não possui dependências externas.
-* **Application:** Onde residem os casos de uso, DTOs, Mappers e as interfaces de serviços e repositórios. Aqui é definido *o que* o sistema faz.
+* **Application:** Onde residem os casos de uso, DTOs, Mappers e as interfaces de serviços e repositórios. Aqui é definido *o que* o sistema faz. Todas a validações foram feitas pelo Fluent Validation nesta camada.
 * **Infrastructure:** Implementações técnicas de acesso a dados (Entity Framework).
 * **API / Presentation:** A porta de entrada da aplicação (ASP.NET Core), responsável pelas rotas, controllers e configuração de Injeção de Dependência.
 
 #### 🛠️ Tecnologias e Padrões
-* **CQRS:** Segregação de leitura e escrita para maior escalabilidade.
 * **MediatR:** Para desacoplamento entre a camada de API e os Handlers de aplicação.
 * **FluentValidation:** Validação de contratos e regras de negócio de forma elegante.
 * **Repository Pattern:** Abstração da camada de persistência. 
+* **Migration**
+* **Minimal APIs**
+
 
 #### Docker
 * *O projeto utiliza Docker Compose para orquestrar o ambiente de desenvolvimento, garantindo que a API e o banco de dados estejam configurados corretamente e se comuniquem.
@@ -43,7 +45,3 @@ O projeto foi desenvolvido seguindo os princípios da **Clean Architecture**, vi
 * *Após a inicialização dos containers, rode o projeto pelo docker compose, acesse a janela dos containers, clique na porta do container da API e o projeto estará disponível em http://localhost:5000/swagger/index.html.
 * *Você poderá acessar os endpoints através do swagger.
  
-##### Detalheas da arquitetura
-* *Segregação de Interfaces de Acesso a Dados
-* *Optei por separar as interfaces de leitura (IReadOnlyRepository) e escrita (IBaseRepository).
-* *Esta abordagem facilita a manutenção, promove o Princípio de Segregação de Interface (ISP) e prepara a aplicação para uma eventual evolução para CQRS, garantindo que consultas simples não tenham acesso a métodos que alteram o estado das entidades."
