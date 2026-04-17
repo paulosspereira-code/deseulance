@@ -33,9 +33,7 @@ O projeto foi desenvolvido seguindo os princípios da **Clean Architecture**, vi
 * *Alias de Rede: Configurado como sqlserver para ser resolvido pela API na connection string.
 
 * *Certifique-se de ter o Docker desktop está instalado em sua máquina.
-* *Ao clonar e abrir o projeto, automaticamente o docker desktop será aberto e iniciará os containers configurados no docker-compose.yml conforme imagem abaixo:
-* ![Iniciando os containers](./assets/iniciandocontainers.png)
-* ![Docker desktop](./assets/dockerdesktop.png)
+* *Ao clonar e abrir o projeto, automaticamente o docker desktop será aberto e iniciará os containers configurados no docker-compose.yml.
 
 🌐 Rede e Persistência
 * *Network (deseulancenet): Foi criada uma rede do tipo bridge chamada deseulancenet. Isso isola os containers do projeto, permitindo que eles se comuniquem de forma segura e eficiente pelo nome do serviço.
